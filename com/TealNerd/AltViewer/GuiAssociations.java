@@ -17,6 +17,7 @@
 /*  17:    */   private GuiButton editMembersButton;
 /*  18:    */   private GuiButton renameGroupButton;
 /*  19:    */   private GuiButton deleteButton;
+private GuiButton searchButton;
 /*  20:    */   private int ticksOpened;
 /*  21:    */   
 /*  22:    */   public GuiAssociations(GuiScreen par1GuiScreen)
@@ -42,7 +43,7 @@
 /*  42:    */     
 /*  43: 39 */     this.buttonList.add(this.renameGroupButton = new GuiButton(15, this.width / 2 - 143, this.height - 52, 143, 20, "Change Main Name"));
 /*  44:    */     
-/*  45:    */ 
+/*  45:    */ 	  this.buttonList.add(this.searchButton = new GuiButton(16, this.width / 2 - 71, this.height - 28, 70, 20, "Search"));
 /*  46:    */ 
 /*  47: 43 */     this.buttonList.add(new GuiButton(10, this.width / 2 - 143, this.height - 28, 70, 20, "Add"));
 /*  48:    */     
@@ -68,6 +69,9 @@
 /*  68:    */   {
 /*  69: 62 */     if (par1GuiButton.enabled)
 /*  70:    */     {
+					if(par1GuiButton.id == 16) {
+						mc.displayGuiScreen(new GuiSearchAlts(this));
+					}
 /*  71: 63 */       if (par1GuiButton.id == 12)
 /*  72:    */       {
 /*  73: 64 */         if ((this.selectedGroup > -1) && (this.selectedGroup < this.groupList.size())) {

@@ -37,5 +37,14 @@ public Association getAltsByUsername(String main) {
 	}
 	return null;
 }
+
+public Association getAllByUsername(String acct) {
+	for(Association ass : this) {
+		if(ass.getMain().equals(acct) || ass.getAlts().contains(acct)) {
+			return ass;
+		}
+	}
+	return null;
+}
 /* 31:   */ }
 

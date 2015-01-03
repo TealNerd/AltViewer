@@ -9,6 +9,10 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 /*  7:   */   private String main;
 /*  8: 8 */   private ArrayList<String> alts = new ArrayList();
 /*  9:   */   
+			public Association() {
+				this.main = " ";
+			}
+
 /* 10:   */   public ArrayList<String> getAlts()
 /* 11:   */   {
 /* 12:11 */     if (this.alts == null) {

@@ -38,12 +38,13 @@
 /*  34:    */   
 /*  35:    */   public void initGuiControls()
 /*  36:    */   {
-/*  37: 31 */     this.buttonList.add(new GuiButton(10, this.width / 2 - 107, this.height - 40, 70, 20, "Add"));
+/*  37: 31 */     this.buttonList.add(new GuiButton(10, this.width / 2 - 107, this.height - 52, 70, 20, "Add"));
 /*  38:    */     
-/*  39: 33 */     this.buttonList.add(this.deleteButton = new GuiButton(12, this.width / 2 - 35, this.height - 40, 70, 20, "Delete"));
+/*  39: 33 */     this.buttonList.add(this.deleteButton = new GuiButton(12, this.width / 2 - 35, this.height - 52, 70, 20, "Delete"));
 /*  40:    */     
-/*  41: 35 */     this.buttonList.add(new GuiButton(14, this.width / 2 + 37, this.height - 40, 70, 20, "Cancel"));
+/*  41: 35 */     this.buttonList.add(new GuiButton(14, this.width / 2 + 37, this.height - 52, 70, 20, "Cancel"));
 /*  42:    */     
+					this.buttonList.add(new GuiButton(13, this.width / 2 - 107, this.height - 28, 216, 20, "Change Main Name"));
 /*  43: 37 */     updateButtons();
 /*  44:    */   }
 /*  45:    */   
@@ -62,6 +63,9 @@
 /*  58:    */   {
 /*  59: 50 */     if (par1GuiButton.enabled)
 /*  60:    */     {
+					if(par1GuiButton.id == 13) {
+						mc.displayGuiScreen(new GuiChangeMainName(this, ass));
+					}
 /*  61: 51 */       if (par1GuiButton.id == 12)
 /*  62:    */       {
 /*  63: 52 */         if ((this.selectedMember > -1) && (this.selectedMember < this.memberList.countGroups())) {
@@ -126,14 +130,21 @@
 /* 122:    */   public void drawScreen(int par1, int par2, float par3)
 /* 123:    */   {
 /* 124:104 */     this.memberSlotContainer.drawScreen(par1, par2, par3);
-/* 125:105 */     drawCenteredString(this.fontRendererObj, "Edit members", this.width / 2, 20, 16777215);
+/* 125:105 */     drawCenteredString(this.fontRendererObj, "Edit Alts for " + ass.getMain(), this.width / 2, 20, 16777215);
+if(ass.getOnlineAccts() != null) {
 				  StringBuilder build = new StringBuilder();
 				  build.append("Online Accounts: ");
 				  for(String name : ass.getOnlineAccts()) {
 					  build.append(name + ", ");
 				  }
+				  try{
 				  build.deleteCharAt(build.lastIndexOf(","));
+				  }catch(Exception e) {
+					  e.printStackTrace();
+				  }
+				  
 				  drawCenteredString(this.fontRendererObj, build.toString(), this.width / 2, 50, Color.GREEN.getRGB());
+				  }
 				  
 /* 126:    */     
 /* 127:107 */     super.drawScreen(par1, par2, par3);
